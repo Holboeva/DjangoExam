@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head itemscope itemtype="http://schema.org/WebSite">
+    <meta charset="UTF-8">
+    <title itemprop="name">Bootstrap Google Plus Style Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <style>
+        body {
+            margin-top: 20px;
+            background-color: #e0e0e0;
+            -webkit-font-smoothing: antialiased;
+            font: normal 14px Roboto, arial, sans-serif;
+            color: #545454;
+        }
+
+        .btn, .form-control, .panel, .list-group, .well {
+            border-radius: 1px;
+            box-shadow: 0 0 0;
+        }
+
+        .form-control {
+            border-color: #d7d7d7;
+        }
+
+        .btn-primary {
+            border-color: transparent;
+            background-color: #4285f4;
+        }
+
+        .modal-dialog {
+            width: 450px;
+        }
+
+        .modal-header, .modal-footer, .modal-content {
+            border: none;
+        }
+
+        .img-circle {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h2>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle"><br>
+                    Login
+                </h2>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+                        <span class="pull-right"><a href="{% url 'register' %}">Register</a></span>
+                        <span><a href="#">Need help?</a></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -72,125 +72,46 @@
     <link
             href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <div
-
             class="container bootstrap snippets bootdey">
         <div
                 class="row">
             <div
                     class="col-md-3 store-menu">
-                <ul
-                        class="nav">
-                    <li><a><i
-                            class="fa fa-angle-right"></i>Sport</a></li>
-                    <li><a><i
-                            class="fa fa-angle-right"></i>Computer </a></li>
-                    <li><a><i
-                            class="fa fa-angle-right"></i>Education </a></li>
-                    <li><a><i
-                            class="fa fa-angle-right"></i>Cars </a></li>
-
+                <ul class="nav">
+                    {% for category in categories %}
+                        <li><a href="#"><i class="fa fa-angle-right"></i>{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
-            <form action="{% url 'category' %}" method="post">
-               {% csrf_token %}
-                    class="col-md-9">
-                <div
-                        class="col-md-6 col-sm-6">
-                    <div
-                            class="store-item">
-                        <div
-                                class="store-item-rating text-warning"><i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star-half-o"></i></div>
-                        <div
-                                class="store-item-image"><a
-                                href="#"> <img
-                                src="https://www.bootdey.com/image/500x200/FFB6C1/000000" alt="" class="img-responsive">
-                        </a></div>
-                        <div
-                                class="store-item-info clearfix"> <span
-                                class="store-item-price themed-color-dark pull-right">$ 109</span> <a
-                                href="#"><strong>Product one</strong></a><br> <small><i
-                                class="fa fa-shopping-cart text-muted"></i> <a
-                                href="#" class="text-muted">Add to cart</a></small></div>
-                    </div>
+            <div class="col-md-9">
+                <div class="col-md-6 col-sm-6">
+                    {% for product in products %}
+
+                        <div class="store-item">
+                            <div
+                                    class="store-item-rating text-warning"><i
+                                    class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i
+                                    class="fa fa-star"></i> <i
+                                    class="fa fa-star-half-o"></i></div>
+                            <div class="store-item-image"><a
+                                    href="{% url 'product-detail' product.pk %}"> <img
+                                    src="{{ product.images.first.image.url }}" alt=""
+                                    class="img-responsive">
+                            </a></div>
+
+                            <div
+                                    class="store-item-info clearfix"> <span
+                                    class="store-item-price themed-color-dark pull-right">$ {{ product.price }}</span>
+                                <a
+                                        href="#"><strong>{{ product.name }}</strong></a><br> <small><i
+                                        class="fa fa-shopping-cart text-muted"></i> <a
+                                        href="#" class="text-muted">Add to cart</a></small></div>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div
-                        class="col-md-6 col-sm-6">
-                    <div
-                            class="store-item">
-                        <div
-                                class="store-item-rating text-warning"><i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star-half-o"></i></div>
-                        <div
-                                class="store-item-image"><a
-                                href="#"> <img
-                                src="https://www.bootdey.com/image/500x200/87CEFA/000000" alt="" class="img-responsive">
-                        </a></div>
-                        <div
-                                class="store-item-info clearfix"> <span
-                                class="store-item-price themed-color-dark pull-right">$ 109</span> <a
-                                href="#"><strong>Product two</strong></a><br> <small><i
-                                class="fa fa-shopping-cart text-muted"></i> <a
-                                href="#" class="text-muted">Add to cart</a></small></div>
-                    </div>
-                </div>
-                <div
-                        class="col-md-6 col-sm-6">
-                    <div
-                            class="store-item">
-                        <div
-                                class="store-item-rating text-warning"><i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star-half-o"></i></div>
-                        <div
-                                class="store-item-image"><a
-                                href="#"> <img
-                                src="https://www.bootdey.com/image/500x200/FF7F50/000000" alt="" class="img-responsive">
-                        </a></div>
-                        <div
-                                class="store-item-info clearfix"> <span
-                                class="store-item-price themed-color-dark pull-right">$ 109</span> <a
-                                href="#"><strong>Product</strong></a><br> <small><i
-                                class="fa fa-shopping-cart text-muted"></i> <a
-                                href="#" class="text-muted">Add to cart</a></small></div>
-                    </div>
-                </div>
-                <div
-                        class="col-md-6 col-sm-6">
-                    <div
-                            class="store-item">
-                        <div
-                                class="store-item-rating text-warning"><i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i
-                                class="fa fa-star-half-o"></i></div>
-                        <div
-                                class="store-item-image"><a
-                                href="#"> <img
-                                src="https://www.bootdey.com/image/500x200/20B2AA/000000" alt="" class="img-responsive">
-                        </a></div>
-                        <div
-                                class="store-item-info clearfix"> <span
-                                class="store-item-price themed-color-dark pull-right">$ 109</span> <a
-                                href="#"><strong>Sunglasses</strong></a><br> <small><i
-                                class="fa fa-shopping-cart text-muted"></i> <a
-                                href="#" class="text-muted">Add to cart</a></small></div>
-                    </div>
-                </div>
-            </>
+
             </div>
         </div>
     </div>

@@ -1,21 +1,20 @@
-from django.contrib import admin
+from django.contrib.admin import register, ModelAdmin, StackedInline
+from django.db.models.functions.datetime import TruncBase
 
 from apps.models import ProductImage, Product, Category
-#
-@admin.register(ProductImage)
-class ProductImageAdmin(admin.ModelAdmin):
+
+
+class ProductImageAdmin(StackedInline):
     model = ProductImage
     max_num = 1
     min_num = 1
-#
-@admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
-    model = Product
-
-#
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    model = Category
 
 
+@register(Product)
+class ProductAdmin(ModelAdmin):
+    inlines = ProductImageAdmin,
+
+
+@register(Category)
+class CategoryAdmin(ModelAdmin):
+    pass

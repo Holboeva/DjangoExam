@@ -1,13 +1,13 @@
-from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
-from apps.views import LoginView, ProfileSettingsView, register_view, category_view,  product_detail_view
+from apps.views import RegisterView, UserLoginView, ChangePasswordView, EditProfileView, HomePage, ProductDetailView
 
 urlpatterns = [
-    path('', register_view, name='register'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('profilesettings/', ProfileSettingsView, name='profile_settings'),
-    path('category/', category_view, name='category'),
-    path('product/', product_detail_view, name='product'),
+    path('', HomePage.as_view(), name='main'),
+    path('product/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
+    path('profile/edit/<int:pk>/', EditProfileView.as_view(), name='edit_profile'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', UserLoginView.as_view(), name='login'),
+    path('profile/', ChangePasswordView.as_view(), name='password_change'),
 ]
